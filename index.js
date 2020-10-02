@@ -28,9 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * Counter1 will store the memory of the closure, counter2 will reset each time.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter1 has the closure because the function is nested inside.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * Counter1 is better because it stores memory. Counter2 is more global and resets.
  *
 */
 
@@ -58,7 +64,7 @@ Write a function called `inning` that generates a random number of points that a
 
 function inning(){
 
-    score = Math.floor(Math.random() * 3)
+    score = Math.floor(Math.random() * 2)
     return score;
 
 }
