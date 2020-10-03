@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+A closure is what holds functions in like a backpack. It keeps functions contained and organized.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+The closure is created in personalDice when another function is started inside. The closure is called function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+Every time `dansRoll` is called is generates a new number. The function stays the same, but the number returned is different.
+
 c. What is the lexical scope of `newRoll`? 
+
+The lexical scope of `newRoll` is broad. It is it's own scope, has access to the parent function, as well as the global scope.
 
 ### Task 3 - Stretch Goals
 
