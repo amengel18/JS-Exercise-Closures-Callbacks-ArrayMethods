@@ -64,7 +64,7 @@ Write a function called `inning` that generates a random number of points that a
 
 function inning(){
 
-    score = Math.floor(Math.random() * 2)
+    score = Math.floor(Math.random() * 3)
     return score;
 
 }
@@ -84,14 +84,17 @@ finalScore(inning, 9) might return:
 */ 
 
 function finalScore(cb, number){
-    let home = 0;
-    let away = 0;
-    for (let i = 0; i < number; i++){
-      home = home + cb();
-      away = away + cb();
+    let score = {
+      "Home": 0,
+      "Away": 0
     }
-    return {"Away": away, "Home": home}
-  
+
+    for (let i = 0; i < number; i++){
+      score.Home += cb()
+      score.Away += cb()
+    }
+
+    return score
 }
 
 console.log(finalScore(inning, 9))
@@ -123,22 +126,38 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(getInningScore, innings, num) {
-      const final = 
-       (home = 0,
-       away = 0);
+function getScore() {
+  let inn = 1
+  return function(score) {
+    let postfix = 'st'
+    if(inn == 2) postfix = 'nd'
+    if(inn == 3) postfix = 'rd'
+    if(inn > 3) postfix = 'th'
+    console.log(`${inn++}${postfix} inning: ${score.away} - ${score.home}`)
+  }
+}
+
+function scoreboard(getInningScore, inning, num) {
+      const score = {
+        home : 0,
+        away : 0
+      };
+
+      let logScore = getInningScore()
          
       for (let i = 0; i < num; i++){
-        home += inning();
-        away += inning();
-        console.log(`Inning ${inning}: Away:${away}, Home:${home}`);
+        score.home += inning();
+        score.away += inning();
+
+        logScore(score)
       }
-      return final;
+
+      console.log(`Final Score: ${score.away} - ${score.home}`)
 }
 
 
 
-console.log(scoreboard(innings, 9))
+scoreboard(getScore, inning, 9)
 
 
 
